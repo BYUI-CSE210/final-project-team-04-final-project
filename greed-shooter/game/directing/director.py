@@ -41,6 +41,7 @@ class Director:
             cast (Cast): The cast of actors.
         """
         robot = cast.get_first_actor("robots")
+        bullet = cast.get_first_actor("bullets")
         velocity = self._keyboard_service.get_direction()
         robot.set_velocity(velocity)        
 
@@ -55,6 +56,7 @@ class Director:
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
+        bullet = cast.get_first_actor("bullets")
 
         banner.set_text("score")
         max_x = self._video_service.get_width()
@@ -63,7 +65,7 @@ class Director:
         
         for artifact in artifacts:
             artifact.move_next(max_x ,max_y) 
-            if robot.get_position().equals(artifact.get_position()):
+            if bullet.get_position().equals(artifact.get_position()):
                 if artifact.get_text() == "O": 
                     message1 = artifact.get_take_point()
                     self._score += message1    

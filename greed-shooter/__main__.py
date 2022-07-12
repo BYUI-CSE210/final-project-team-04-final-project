@@ -4,6 +4,7 @@ import random
 from game.casting.actor import Actor
 from game.casting.artifact import Artifact
 from game.casting.cast import Cast
+from game.casting.bullet import Bullet
 
 from game.directing.director import Director
 
@@ -26,7 +27,9 @@ CAPTION = "Greed, Greed, Go, Go!"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
-
+BULLET_RADIUS = 30
+BULLET_SPEED = 10
+BULLET_LIFE = 60
 
 def main():
     
@@ -53,6 +56,13 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
+    bullet = Bullet()
+    bullet.set_text = "!"
+    bullet.set_color(WHITE)
+    bullet.set_position = robot.set_position(position)
+    bullet._velocity = BULLET_SPEED
+    cast.add_actor("bullets",bullet )
+
 
 
 
