@@ -1,20 +1,21 @@
 from game.casting.actor import Actor
+
+
 class Bullet(Actor):
     """
-    The responsibility of a bullet is to shoot.
+    The responsibility of a bullet is to fly across the screen.
 
     Attributes:
         _message (string): to display the score when the gems or rocks touch the actor player.
     """
     def __init__(self):
         super().__init__()
-        self._x_direction = 0.0
-        self._y_direction = 0.0
+        self._score = 0
+        self._velocity_x = 0
+        self._velocity_y = 0
         
-        self._velocity._x = 0
-        self._velocity._y = 0
-        
+    def fire(self,robot_velocity_x, robot_velocity_y):
+        self._velocity_x -= robot_velocity_x
+        self._velocity_y += robot_velocity_y
 
-   # def shoot(self, robot_x, robot_y):
-        #self._velocity._x -= robot_x * BULLET_SPEED
-      #  self._velocity._y += robot_y * BULLET_SPEED
+     

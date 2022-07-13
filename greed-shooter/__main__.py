@@ -4,7 +4,7 @@ import random
 from game.casting.actor import Actor
 from game.casting.artifact import Artifact
 from game.casting.cast import Cast
-from game.casting.bullet import Bullet
+
 
 from game.directing.director import Director
 
@@ -56,12 +56,13 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
-    bullet = Bullet()
-    bullet.set_text = "!"
+    #Create the bullets
+    bullet = Actor()
+    bullet.set_text = "+"
+    bullet.set_font_size(FONT_SIZE * 2)
     bullet.set_color(WHITE)
-    bullet.set_position = robot.set_position(position)
-    bullet._velocity = BULLET_SPEED
-    cast.add_actor("bullets",bullet )
+    bullet.set_position(Point(CELL_SIZE, 40))
+    cast.add_actor("bullets", bullet)
 
 
 
