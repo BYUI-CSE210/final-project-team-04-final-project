@@ -55,14 +55,6 @@ def main():
     robot.set_color(WHITE)
     robot.set_position(position)
     cast.add_actor("robots", robot)
-    
-    #Create the bullets
-    bullet = Actor()
-    bullet.set_text = "+"
-    bullet.set_font_size(FONT_SIZE * 2)
-    bullet.set_color(WHITE)
-    bullet.set_position(Point(CELL_SIZE, 40))
-    cast.add_actor("bullets", bullet)
 
 
 

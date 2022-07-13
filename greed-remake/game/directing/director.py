@@ -55,7 +55,6 @@ class Director:
 
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        bullets = cast.get_actors("bullets")
         artifacts = cast.get_actors("artifacts")
         
 
@@ -66,21 +65,17 @@ class Director:
         
         
         for artifact in artifacts:
-            for bullet in bullets:
-                artifact.move_next(max_x ,max_y) 
-                bullet.move_next(max_x,max_y)
-                if bullet.get_position().equals(artifact.get_position()):
-                    if artifact.get_text() == "O": 
-                        message1 = artifact.get_take_point()
-                        self._score += message1    
+            artifact.move_next(max_x ,max_y) 
+            if robot.get_position().equals(artifact.get_position()):
+                if artifact.get_text() == "O": 
+                    message1 = artifact.get_take_point()
+                    self._score += message1    
+                    cast.remove_actor("artifacts", artifact)
+                else:
+                    if artifact.get_text() == "*": 
+                        message1 = artifact.get_add_point()
+                        self._score += message1
                         cast.remove_actor("artifacts", artifact)
-                        cast.remove_actor("bullets", bullet)
-                    else:
-                        if artifact.get_text() == "*": 
-                            message1 = artifact.get_add_point()
-                            self._score += message1
-                            cast.remove_actor("artifacts", artifact)
-                            cast.remove_actor("bullets", bullet)
                         
 
         banner.set_text(f'score: {self._score}')   

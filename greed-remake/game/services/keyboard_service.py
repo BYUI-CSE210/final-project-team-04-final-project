@@ -19,7 +19,7 @@ class KeyboardService:
             cell_size (int): The size of a cell in the display grid.
         """
         self._cell_size = cell_size
-
+        self._bullet = Bullet()
     def get_direction(self):
         """Gets the selected direction based on the currently pressed keys.
 
@@ -36,7 +36,7 @@ class KeyboardService:
             dx = 1
 
         if pyray.is_key_down(pyray.KEY_SPACE):
-            dx = 10 
+            self._bullet.fire(10,10)
 
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
