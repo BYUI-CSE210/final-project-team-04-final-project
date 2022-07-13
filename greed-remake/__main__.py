@@ -39,7 +39,7 @@ def main():
     # create the banner
     banner = Actor()
     banner.set_text("")
-    banner.set_font_size(FONT_SIZE)
+    banner.set_font_size(FONT_SIZE*2)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
     cast.add_actor("banners", banner)
@@ -50,8 +50,8 @@ def main():
     position = Point(x, y)
 
     robot = Actor()
-    robot.set_text("#")
-    robot.set_font_size(FONT_SIZE)
+    robot.set_text("+")
+    robot.set_font_size(FONT_SIZE*2)
     robot.set_color(WHITE)
     robot.set_position(position)
     cast.add_actor("robots", robot)
@@ -77,7 +77,7 @@ def main():
         
         artifact = Artifact()
         artifact.set_text(symbol)
-        artifact.set_font_size(FONT_SIZE)
+        artifact.set_font_size(FONT_SIZE*3)
         artifact.set_color(color)
         artifact.set_position(position)
         artifact.set_velocity(Point(0,1))
