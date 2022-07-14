@@ -18,7 +18,7 @@ class Artifact(Actor):
         Returns:
             string: The message.
         """
-        self._score += 1
+        self._score += 10
         return self._score
 
     def get_take_point(self):
@@ -27,5 +27,5 @@ class Artifact(Actor):
         Returns:
             string: The message.
         """
-        self._score -= 1
+        self._score -= 5
         return self._score

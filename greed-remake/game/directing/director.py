@@ -80,7 +80,7 @@ class Director:
           
                         
         banner.set_text(f'score: {self._score}')   
-        if self._score == 10:
+        if self._score == 100:
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
             position = Point(x, y)
