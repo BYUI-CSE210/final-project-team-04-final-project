@@ -68,7 +68,7 @@ class Director:
         
         for artifact in artifacts:
             artifact.move_next(max_x ,max_y) 
-            if robot.get_position().equals(artifact.get_position()):
+            if artifact.get_position().equals(robot.get_position()):
                 if artifact.get_text() == "O": 
                     message1 = artifact.get_take_point()
                     self._score += message1    
