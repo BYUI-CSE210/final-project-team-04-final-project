@@ -1,3 +1,6 @@
+import constants
+from game.shared.point import Point
+from game.casting.actor import Actor
 class Director:
     """A person who directs the game. 
     
@@ -20,7 +23,7 @@ class Director:
         self._keyboard_service = keyboard_service
         self._video_service = video_service
         self._score = 0
-       
+        
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
 
@@ -69,18 +72,23 @@ class Director:
                 if artifact.get_text() == "O": 
                     message1 = artifact.get_take_point()
                     self._score += message1    
-                    cast.remove_actor("artifacts", artifact)
+                    
                 else:
                     if artifact.get_text() == "*": 
                         message1 = artifact.get_add_point()
                         self._score += message1
-                        cast.remove_actor("artifacts", artifact)
-                        
-           
-            
+          
                         
         banner.set_text(f'score: {self._score}')   
-                
+        if self._score == 10:
+            x = int(constants.MAX_X / 2)
+            y = int(constants.MAX_Y / 2)
+            position = Point(x, y)
+
+            message = Actor()
+            message.set_text("Congratulations! You Win!!!")
+            message.set_position(position)
+            cast.add_actor("messages", message)        
         
     def _do_outputs(self, cast): 
         """Draws the actors on the screen.
