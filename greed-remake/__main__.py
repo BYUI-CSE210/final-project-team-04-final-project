@@ -6,6 +6,7 @@ from game.casting.artifact import Artifact
 from game.casting.cast import Cast
 
 
+
 from game.directing.director import Director
 
 
@@ -23,13 +24,12 @@ CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Greed, Greed, Go, Go!"
+CAPTION = "Greed-Remake"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 40
-BULLET_RADIUS = 30
-BULLET_SPEED = 10
-BULLET_LIFE = 60
+DEFAULT_ARTIFACTS = 50
+
+
 
 def main():
     
@@ -56,7 +56,7 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
 
-
+    
 
 
     for n in range(DEFAULT_ARTIFACTS):
@@ -77,12 +77,16 @@ def main():
         
         artifact = Artifact()
         artifact.set_text(symbol)
-        artifact.set_font_size(FONT_SIZE*3)
+        artifact.set_font_size(FONT_SIZE*2)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_velocity(Point(0,1))
+        artifact.set_velocity(Point(0,5))
+        
         
         cast.add_actor("artifacts", artifact)
+        if artifact.get_position() == robot.get_position():
+            artifact.set_font_size(FONT_SIZE*4)
+            cast.remove_actor("Artifacts", artifact)
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)

@@ -41,7 +41,6 @@ class Director:
             cast (Cast): The cast of actors.
         """
         robot = cast.get_first_actor("robots")
-        bullet = cast.get_actors("bullets")
         velocity = self._keyboard_service.get_direction()
         robot.set_velocity(velocity)        
 
@@ -77,7 +76,9 @@ class Director:
                         self._score += message1
                         cast.remove_actor("artifacts", artifact)
                         
-
+           
+            
+                        
         banner.set_text(f'score: {self._score}')   
                 
         
