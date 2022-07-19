@@ -59,16 +59,18 @@ class Director:
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
         
+        
 
         banner.set_text("score")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
-        
+    
         for artifact in artifacts:
             artifact.move_next(max_x ,max_y) 
-            if artifact.get_position().equals(robot.get_position()):
+
+            if robot.get_position().equals(artifact.get_position()):
                 if artifact.get_text() == "O": 
                     message1 = artifact.get_take_point()
                     self._score += message1    
@@ -80,15 +82,18 @@ class Director:
           
                         
         banner.set_text(f'score: {self._score}')   
-        if self._score == 100:
-            x = int(constants.MAX_X / 2)
+        if self._score >= 100:
+            x = int(constants.MAX_X / 14)
             y = int(constants.MAX_Y / 2)
             position = Point(x, y)
 
             message = Actor()
             message.set_text("Congratulations! You Win!!!")
             message.set_position(position)
-            cast.add_actor("messages", message)        
+            message.set_font_size(constants.FONT_SIZE*4)
+            cast.add_actor("messages", message)    
+            for artifact in artifacts:
+                artifact.set_color(constants.GREEN)    
         
     def _do_outputs(self, cast): 
         """Draws the actors on the screen.

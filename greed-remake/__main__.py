@@ -62,9 +62,9 @@ def main():
         position = Point(x, y)
         position = position.scale(constants.CELL_SIZE)
 
-        r = random.randint(0, 255)
-        g = random.randint(0, 255)
-        b = random.randint(0, 255)
+        r = random.randint(150, 255)
+        g = random.randint(200, 255)
+        b = random.randint(5, 255)
         color = Color(r, g, b)
         
         artifact = Artifact()
@@ -72,7 +72,7 @@ def main():
         artifact.set_font_size(constants.FONT_SIZE*2)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_velocity(Point(0,10))
+        artifact.set_velocity(Point(0,1))
         
         
         cast.add_actor("artifacts", artifact)

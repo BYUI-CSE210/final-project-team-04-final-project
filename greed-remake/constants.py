@@ -12,4 +12,5 @@ ROWS = 40
 CAPTION = "Greed-Remake"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
+GREEN = Color(0, 128, 0)
 DEFAULT_ARTIFACTS = 40
