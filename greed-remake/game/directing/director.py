@@ -22,7 +22,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
-        self._score = 0
+        self._score = 100
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -58,13 +58,18 @@ class Director:
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
+        points = self._score
         
         
 
-        banner.set_text("score")
+        banner.set_text("score%s" % (points))
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
+
+        if points <= 0:
+            self._video_service._game_over()
+            self._score = 500
         
     
         for artifact in artifacts:
@@ -82,7 +87,7 @@ class Director:
           
                         
         banner.set_text(f'score: {self._score}')   
-        if self._score >= 100:
+        if self._score >= 500:
             x = int(constants.MAX_X / 14)
             y = int(constants.MAX_Y / 2)
             position = Point(x, y)
